@@ -15,7 +15,7 @@ build:
 #    - ./deployment-tasks.sh
 #  image: worker
 run:
-  server:
+  web:
     command:
       - server
     image: redash
