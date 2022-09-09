@@ -6,7 +6,7 @@ setup:
     S3_BUCKET: my-example-bucket
 build:
   docker:
-    redash: Dockerfile
+    web: Dockerfile
   config:
     RAILS_ENV: development
     FOO: bar
@@ -18,16 +18,16 @@ run:
   web:
     command:
       - server
-    image: redash
+    image: web
   scheduler:
     command:
       - scheduler
-    image: redash
+    image: web
   scheduled_worker:
     command:
       - QUEUES=scheduled_queries,schemas WORKERS_COUNT=1 worker
-    image: redash
+    image: web
   adhoc_worker:
     command:
       - QUEUES=queries WORKERS_COUNT=2 worker
-    image: redash
+    image: web
