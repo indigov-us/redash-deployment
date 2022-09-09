@@ -25,15 +25,9 @@ run:
     image: redash
   scheduled_worker:
     command:
-      - worker
+      - QUEUES=scheduled_queries,schemas WORKERS_COUNT=1 worker
     image: redash
-    config:
-      QUEUES: "scheduled_queries,schemas"
-      WORKERS_COUNT: 1
   adhoc_worker:
     command:
-      - worker
+      - QUEUES=queries WORKERS_COUNT=2 worker
     image: redash
-    config:
-      QUEUES: "queries"
-      WORKERS_COUNT: 2
