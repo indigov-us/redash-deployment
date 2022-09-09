@@ -16,20 +16,24 @@ build:
 #  image: worker
 run:
   server:
-    command: server
+    command:
+      - server
     image: redash
   scheduler:
-    command: scheduler
+    command:
+      - scheduler
     image: redash
   scheduled_worker:
-    command: worker
+    command:
+      - worker
     image: redash
-    environment:
+    config:
       QUEUES: "scheduled_queries,schemas"
       WORKERS_COUNT: 1
   adhoc_worker:
-    command: worker
+    command:
+      - worker
     image: redash
-    environment:
+    config:
       QUEUES: "queries"
       WORKERS_COUNT: 2
